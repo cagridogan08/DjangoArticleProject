@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block body %}
+{% if article %}
+<div class="mb-3">
+    <label for="articledetail" class="form-label"></label>
+    {% if article.author == request.user %}
+    <div class="jumbotrom text-right">
+     <div class="dropdown">
+         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Settings
+         </button>
+         <div class="dropdown-menu">
+             <a href="#" class="dropdown-item">Edit</a>
+             <a href="/delete/{{article.id}}" class="dropdown-item">Delete</a>
+         </div>
+     </div>
+    </div>
+    {% endif %}
+    <div class="jumbotrom text-center">
+        <h3>Title:{{article.title }}</h3>
+    </div>
+    
+    <div class="mb-3">
+        <div class="jumbotrom text-center">
+        <img src="{{article.image.url}}" style="height: 640px; width: 960px;;">
+        
+        <h5>Content: {{ article.content |safe}}</h5>
+        <h5> Author: {{article.author.username}}</h5>
+        <p>Created At : {{article.created_date}}</p>
+    </div>
+    </div>
+
+</div>
+{% endif %}
+
+
+{% endblock %}

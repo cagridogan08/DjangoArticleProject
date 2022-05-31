@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+    <div>
+        <div class="jumbotrom text-center">
+            <h1 class="lg:text3x1 text-x1 font:semibold mb-k">Login</h1>
+            <div>
+                {% for message in messages %}
+                <h5>{{message}}</h5>
+                {% endfor %}
+            </div>
+            
+            <form action="" method="POST" class="form-horizontan">
+                {% csrf_token %}
+                <div class="form-group"> 
+                <input type="text" name="username" placeholder="Username" class="form-control" style="border: 1px solid #d3d5d8 !important;">
+                </div>
+                <div class="form-group">
+                <input type="password" name="password" placeholder="Password" class="form-control"style="border: 1px solid #d3d5d8 !important;"></div>
+                <button type="submit"class="form-control">Login</button>
+                <div class="text-center mt-5 space-x-2">
+                    <p class="text-base"> Not registered? <a href="/signup" class=""> Create a account </a></p>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+{% endblock %}

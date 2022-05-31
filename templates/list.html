@@ -1,0 +1,43 @@
+{% extends 'index.html' %} {% block body %}
+
+<hr />
+
+<br />
+<div class="row">
+  {% for artic in page_obj %}
+  <div class="col-sm-auto col-md-auto" style="margin-left: 50px;">
+    <div class="list-group" style="border: 1.5rem; border-style:solid; border-color: lightslategray;">
+      <ul>
+     <li> <a href="{% url 'detail' artic.id %}" style="border: 1px;">
+        <img src="{{ artic.image.url }}" class="image-responsive" style="width: 300px; height: 240px;">
+        <div class="jumbotrom text-center" style="text-overflow:ellipsis ;">
+          <h3 style="color:black;" class="card-title">{{artic.title}}</h3>
+          <h5 style="color: white">Date:{{artic.created_date}}</h5>
+          <h5 style="color:white ;">Author:{{artic.author.username}}</h5>
+        </div>
+      </a>
+    </li>
+    </ul>
+    </div>
+  </div>
+  {% endfor %}
+  
+</div>
+<div class="text-center" style="margin-top: 10px;">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1" style="color:white ;">&laquo; First</a>
+          <a href="?page={{ page_obj.previous_page_number }} " style="color:white ;">Previous</a>
+      {% endif %}
+
+      <span class="current" style="color:rgb(3, 3, 3) ;">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}"style="color:white ;">Next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}"style="color:white ;">Last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+{% endblock %}
