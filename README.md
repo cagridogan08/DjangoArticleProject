@@ -1,4 +1,5 @@
 ﻿# DjangoArticleProject
  
- 
-![alt text](HomePage.png))
+ Home:
+![alt text](HomePage.png)
+
